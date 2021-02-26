@@ -10,10 +10,13 @@ CONFIG += c++11
 
 SOURCES += \
     main.cpp \
-    matel_inputnumber.cpp
+    matel_inputnumber.cpp \
+    matrix_element.cpp
 
 HEADERS += \
-    matel_inputnumber.h
+    head_mx.h \
+    matel_inputnumber.h \
+    matrix_element.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
