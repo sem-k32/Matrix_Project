@@ -12,40 +12,65 @@
 }
 
 void rational::easy() {
-    unsigned long a = abs(p);
-    unsigned long b = q;
-    unsigned long t;
-   while (a!=b){
-       if (a>b)
-           a-=b;
-       else if (a<b)
-           t = a;
-           a = b;
-           b = t;
+    if (p==0){
+        q = 1;
+    }
+    else {
+        long c = abs(p);
+        unsigned long b = q;
+        unsigned long t;
+        while (c != b) {
+            if (c > b)
+                c -= b;
+            else if (c < b) {
+                t = c;
+                c = b;
+                b = t;
+            }
 
-   }
-   p/=a;
-   q/=a;
+        }
+        p /= c;
+        q /= c;
+    }
 }
 
 rational::operator double() const {
     double g = p;
     return g/q;
 }
- rational operator+ ( rational a,  rational b) {
-    rational k(a.get_p() * b.get_q() + a.get_q() * b.get_p(),a.get_q()*b.get_q());
+
+void rational::replace_p(long x) {
+p = x;
+}
+
+void rational::replace_q(long x) {
+q = x;
+}
+
+rational::rational(long a, unsigned long b): p(a), q(b) {}
+
+rational::~rational() {
+
+}
+
+rational operator+ ( const rational& a,  const rational& b) {
+    rational k(((a.get_p() * b.get_q()) + (a.get_q() * b.get_p())),a.get_q() * b.get_q());
+
     return k;
 }
-rational operator- ( rational a,  rational b){
+rational operator- ( const rational& a,  const rational& b){
     rational k(a.get_p() * b.get_q() - a.get_q() * b.get_p(),a.get_q()*b.get_q());
+
     return k;
 }
-rational operator* ( rational a,  rational b){
+rational operator* ( const rational& a,  const rational& b){
     rational k(a.get_p() * b.get_p() ,a.get_q()*b.get_q());
+
     return k;
 }
-rational operator/ ( rational a,  rational b){
+rational operator/ ( const rational& a,  const rational& b){
     rational k(a.get_p() * b.get_q() ,a.get_q()*b.get_p());
+
     return k;
 }
 

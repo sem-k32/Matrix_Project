@@ -12,22 +12,34 @@ private:
     // знаменатель
     unsigned long q;
 public:
-rational(long p, unsigned long q ){};
-~rational(){}
+    //конструктор
+rational(long a, unsigned long b );
+    //деструктор
+~rational();
 // вывод числителя и знаменателя
  long get_p() const;
  unsigned long get_q() const;
+    // замена числителя и знаменателя
+    void replace_p(long x);
+    void replace_q(long x);
+
+
 // перевод в double
 operator double() const;
 // сокращение НОДа
 void easy();
+// конструктор копирования
+//void copy (rational whom, rational to);
+
+
+
 
 };
 // операции с рациональными числами
-//rational operator +( rational &a,  rational &b){};
-//rational operator -( rational &a,  rational &b){};
-//rational operator *( rational &a,  rational &b){};
-//rational operator /( rational &a,  rational &b){};
+rational operator +(const rational &a, const rational &b);
+rational operator -(const rational &a, const rational &b);
+rational operator *(const rational &a, const rational &b);
+rational operator /(const rational &a, const rational &b);
 
 
 template <typename T>
@@ -41,9 +53,10 @@ private:
 public:
     // добавить ввод из файла
     MATRIX();
-    // добавить строку
+    // добавить строку вниз
     void add_row();
-    // добавить столбец
+
+    // добавить столбец вправо
     void add_column();
     // вывод размеров матрицы
     unsigned int get_n();
